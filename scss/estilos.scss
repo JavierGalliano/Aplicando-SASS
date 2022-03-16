@@ -1,3 +1,14 @@
+@mixin titulos {
+        font-size: 15px;
+        padding-bottom: 10px;
+        text-align: center;
+}
+$colores:(
+"colorprincipal": dodgerblue,
+"colorhover": white,
+"colortitulos": black,
+"colortexto": rgb(189, 48, 48), 
+);
 *{
     margin: 0;
     padding: 0;
@@ -8,6 +19,14 @@ html{
 }
 body{
     height: 100%;
+}
+.estilotitulo{
+    text-decoration: underline;
+    color: black
+}
+.estilotitulo--nuevo{
+    @extend .estilotitulo;
+    color: white; 
 }
 .grid-container{
     grid-template-columns: auto auto;
@@ -24,7 +43,7 @@ body{
 .encabezado{
     grid-area: encabezado;
     grid-column: 1 / 3;
-    background-color: dodgerblue;   
+    background-color: map-get($map:$colores, $key:colorprincipal );  
 }
 .portada{
     width:100%;
@@ -32,7 +51,7 @@ body{
 .navegacion{
     grid-area: navegacion;
     grid-column: 1 / 3;
-    background-color: dodgerblue;
+    background-color: map-get($map:$colores, $key:colorprincipal );
     border: solid black 3px;
 ul{
     list-style: none;
@@ -49,7 +68,7 @@ a{
     display: block;
     color: black;
     &:hover{
-        background-color: white;
+        background-color: map-get($map:$colores, $key:colorhover );
     }
 }
 }
@@ -57,7 +76,7 @@ a{
 .contenido{
     grid-area: contenido;
     grid-column: 1 / 3;
-    background-color: dodgerblue;
+    background-color: map-get($map:$colores, $key:colorprincipal );
     
 }
 .imagencentral{
@@ -68,13 +87,10 @@ a{
     grid-area: aside;
     grid-row: 4 / 5;
     grid-column: 1 / 3;
-    background-color: dodgerblue;
+    background-color: map-get($map:$colores, $key:colorprincipal );
     border: solid black 3px;
     h1{
-        font-size: 15px;
-        padding-bottom: 10px;
-        text-decoration: underline 3px;
-        text-align: center;
+        @include titulos;
     }
     p{
         font-size: 14px;
@@ -85,10 +101,9 @@ a{
     grid-area: pie;
     grid-column: 1 / 3;
     grid-row: 5 / 6;
-    background-color: dodgerblue;
+    background-color: map-get($map:$colores, $key:colorprincipal );
     border: solid black 3px;
     h2{
-        font-size: 10px;
-        text-align: center;
+        @include titulos;
     }
 }
